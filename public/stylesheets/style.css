@@ -1,0 +1,267 @@
+html, body, div, span, h1 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    outline: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background: #f0f0f0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #313131;
+    font-size: 62.5%;
+    line-height: 1;
+}
+
+::selection {
+    background: #a4dcec;
+}
+
+::-moz-selection {
+    background: #a4dcec;
+}
+
+::-webkit-selection {
+    background: #a4dcec;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #ccc;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #ccc;
+    font-style: italic;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #ccc;
+    font-style: italic;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #ccc !important;
+    font-style: italic;
+}
+
+input, textarea {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#topbar {
+    background: #4f4a41;
+    padding: 20px 0 20px 0;
+    text-align: center;
+}
+
+#content {
+    display: block;
+    float: left;
+    margin-left: 20px;
+    margin-top: 30px;
+    width: 800px;
+    background: #fff;
+    padding: 25px 20px;
+    padding-bottom: 35px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+
+#searchfield {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+    #searchfield form {
+        display: inline-block;
+        background: #eeefed;
+        padding: 0;
+        margin: 0;
+        padding: 5px;
+        border-radius: 3px;
+        margin: 5px 0 0 0;
+    }
+
+        #searchfield form .biginput {
+            width: 500px;
+            height: 40px;
+            padding: 0 10px 0 10px;
+            background-color: #fff;
+            border: 1px solid #c8c8c8;
+            border-radius: 3px;
+            color: #aeaeae;
+            font-weight: normal;
+            font-size: 1.5em;
+            -webkit-transition: all 0.2s linear;
+            -moz-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+        }
+
+            #searchfield form .biginput:focus {
+                color: #858585;
+                outline-color: #54B4AD;
+            }
+
+.autocomplete-suggestions {
+    border: 1px solid #999;
+    background: #fff;
+    cursor: default;
+    overflow: auto;
+}
+
+.autocomplete-suggestion {
+    padding: 10px 5px;
+    font-size: 1.2em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.autocomplete-selected {
+    background: #f0f0f0;
+}
+
+.autocomplete-suggestions strong {
+    font-weight: normal;
+    color: #3399ff;
+}
+
+h1 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 2.5em;
+    line-height: 1.5em;
+    letter-spacing: -0.05em;
+    margin-bottom: 20px;
+    padding: .1em 0;
+    color: #444;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+}
+
+    h1:before,
+    h1:after {
+        content: "";
+        position: relative;
+        display: inline-block;
+        width: 50%;
+        height: 1px;
+        vertical-align: middle;
+        background: #f0f0f0;
+    }
+
+    h1:before {
+        left: -.5em;
+        margin: 0 0 0 -50%;
+    }
+
+    h1:after {
+        left: .5em;
+        margin: 0 -50% 0 0;
+    }
+
+    h1 > span {
+        display: inline-block;
+        vertical-align: middle;
+        white-space: normal;
+    }
+
+h2 {
+    text-align: center;
+}
+
+#stopSearchResult {
+    font-weight: normal;
+    font-size: 1.5em;
+}
+
+.routeSummary, .routeSummaryHeader {
+    width: 600px;
+    margin-left: 50px;
+}
+
+    .routeSummary:hover {
+        width: 600px;
+        background-color: #d4e3e5;
+        cursor: pointer;
+    }
+
+.routeDetail {
+    width: 500px;
+    background-color: #d4e3e5;
+    border-width: 2px;
+    border-color: #729ea5;
+    border-style: solid;
+    margin: 10px;
+    margin-left: 50px;
+    padding: 10px;
+}
+
+.arrivalHeader {
+    margin-left: 225px;
+    color: #729ea5; /*#4f4a41;*/
+    font-size: 125%;
+}
+
+.pinBtn {
+    cursor: pointer;
+    color: #729ea5;
+}
+
+    .pinBtn:hover {
+        font-weight: bold;
+    }
+
+.routePin {
+    font-size: 1.5em;
+    background-color: #ffffff;
+    border-width: 2px;
+    border-color: #729ea5;
+    border-style: solid;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.pinnedContent {
+    margin-top: 30px;
+    margin-left: 20px;
+    display: block;
+    height: 100%;
+    width: 350px;
+    float: left;
+    background: #fff;
+    padding: 20px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+.close {
+    float: right;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+    .close:hover {
+        color: #729ea5;
+    }
+
+.noPin {
+    text-align: center;
+    font-size: 1.5em;
+}

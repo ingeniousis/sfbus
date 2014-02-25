@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- CSS StyleSheet -->
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    
+    <!-- External Javascripts -->
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+    <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+    <script src="/javascripts/jquery.autocomplete.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <!-- Underscore Templates -->
+    <script type="text/template" id="tpl-route-nopin">
+        <div class="noPin">No routes are pinned.</div>
+    </script>
+
+    <script type="text/template" id="tpl-route-summary">
+        <table class="routeSummary">
+            <tr>
+                <td style="width: 40%">Route <%= tv.routeTitle %></td>
+                <td style="width: 50%"><%= tv.direction %></td>
+                <td style="width: 10%"><%= tv.predictions[0].$.minutes %> mins</td>
+            </tr>
+        </table>
+        <div class="routeDetail">
+            <table style="width: 100%">
+                <tr style="font-weight: bold">
+                    <td style="width: 35%">Vehicle</td>
+                    <td style="width: 35%">Arriving</td>
+                    <td style="width: 30%">Delayed</td>
+                </tr>
+                <tr />
+                <% _.each(tv.predictions, function(prediction) { %>
+            <tr>
+                <td style="width: 35%"><%= prediction.$.vehicle %></td>
+                <td style="width: 35%"><%= prediction.$.minutes %> mins</td>
+                <td style="width: 30%"><% if ( prediction.$.affectedByLayover || prediction.$.delayed){ %>
+                        Yes
+                    <% } else { %>
+                        No
+                    <% } %>
+                </td>
+            </tr>
+
+                <% });%>
+            </table>
+            <br />
+            <% if (window.app.routesPinned[tv.stopId + ':' + tv.id + ':' + tv.directionIndex]){ %>
+            <div>This route is already pinned</div>
+            <% } else { %>
+            <div class="pinBtn">Pin this route</div>
+            <% } %>
+        </div>
+    </script>
+
+    <script type="text/template" id="tpl-route-summary-list">
+        <div class="arrivalHeader">
+            Arrival times at <%= tv %>
+        </div>
+        <br />
+        <br />
+        <br />
+        <table class="routeSummaryHeader" style="font-weight: bold">
+            <tr>
+                <td style="width: 40%">Route</td>
+                <td style="width: 50%">Direction</td>
+                <td style="width: 10%">Arrival</td>
+            </tr>
+        </table>
+    </script>
+
+    <script type="text/template" id="tpl-route-pinned">
+        <div class="routePin">
+            <div class="close"><b>X</b></div>
+            <table style="width: 100%">
+                <tr>
+                    <td style="width: 35%"><b>Stop</b></td>
+                    <td style="width: 65%"><%= tv.stopTitle %></td>
+                </tr>
+                <tr>
+                    <td style="width: 35%"><b>Route</b></td>
+                    <td style="width: 65%"><%= tv.routeTitle %></td>
+                </tr>
+                <tr>
+                    <td style="width: 35%"><b>Direction</b></td>
+                    <td style="width: 65%"><%= tv.direction %></td>
+                </tr>
+            </table>
+            <br />
+            <table style="width: 100%">
+                <tr style="font-weight: bold">
+                    <td style="width: 35%">Vehicle</td>
+                    <td style="width: 35%">Arriving</td>
+                    <td style="width: 30%">Delayed</td>
+                </tr>
+                <tr />
+                <% _.each(tv.predictions, function(prediction) { %>
+            <tr>
+                <td style="width: 35%"><%= prediction.$.vehicle %></td>
+                <td style="width: 35%"><%= prediction.$.minutes %> mins</td>
+                <td style="width: 30%"><% if ( prediction.$.affectedByLayover || prediction.$.delayed){ %>
+                        Yes
+                    <% } else { %>
+                        No
+                    <% } %>
+                </td>
+            </tr>
+
+                <% });%>
+            </table>
+        </div>
+    </script>
+
+</head>
+<body>
+    <div id="topbar"></div>
+    <div id="content">
+        <h1>San Francisco Bus Timings</h1>
+        <div id="searchfield">
+            <form id="set-stopid">
+                <input type="text" class="biginput" id="autocomplete" value="Loading..." placeholder="Start typing stop name">
+            </form>
+        </div>
+
+        <div id="stopSearchResult"></div>
+        <div id="stopSearchResultDetail"></div>
+    </div>
+    <div class="pinnedContent">
+        <h2>Pinned Routes</h2>
+        <div id="pinnedRoutes">
+            <div class="noPin">No routes are pinned.</div>
+        </div>
+    </div>
+</body>
+    <!-- Internal Javascripts -->
+    <script src="/javascripts/routemodel.js"></script>
+    <script src="/javascripts/routeview.js"></script>
+    <script src="/javascripts/routepinnedview.js"></script>
+    <script src="/javascripts/start.js"></script>
+</html>
